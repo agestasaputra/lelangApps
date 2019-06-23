@@ -1,0 +1,138 @@
+<table class="table table-responsive table-bordered table-hover">
+  <thead class="thead-dark" style="text-align: center">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Business Field</th>
+      <th scope="col">Start Time</th>
+      <th scope="col">Contract Value</th>
+      <th scope="col">Warranty</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataLelang" >
+      <td> {{ data._id }} </td>
+      <td> {{ data.name }} </td>
+      <td> {{ data.address }} </td>
+      <td> {{ data.business_field }} </td>
+      <td> {{ data.start_time }} </td>
+      <td> {{ data.contract_value }} </td>
+      <td> {{ data.warranty }} </td>
+      <td>
+        <button class="btn btn-sm btn-primary" style="margin-bottom: 5px" (click)="open(modalEdit)"> Edit </button>
+        <button class="btn btn-sm btn-danger" (click)="open(modalDelete)"> Hapus </button>
+        <!-- <button class="btn btn-lg btn-outline-danger" (click)="open(content)"> Edit </button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #modalEdit let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Edit Data</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" style="padding: 20px 40px 40px 40px">
+
+    <form #editForm=ngForm>
+      <div class="row" style="margin-top: 20px">
+        <div class="col-sm-2" style="padding: 0px" >
+          <label for="name" style="margin-top: 5px">Nama Pekerjaan</label>
+        </div>
+        <div class="col-sm-10"> 
+          <input type="text" id="name" class="form-control" style="display: inline" placeholder="Masukkan Nama Pekerjaan" name="name" ngModel>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 20px">
+        <div class="col-sm-2" style="padding: 0px" >
+          <label for="location" style="margin-top: 5px">Lokasi Pekerjaan</label>
+        </div>
+        <div class="col-sm-10"> 
+          <input type="text" id="location" class="form-control" style="display: inline" placeholder="Masukkan Lokasi Pekerjaan" name="location" ngModel>
+        </div>
+      </div>
+      
+      <div class="row" style="margin-top: 20px">
+        <div class="col-sm-2" style="padding: 0px" >
+          <label for="business_field" style="margin-top: 5px">Bidang Usaha</label>
+        </div>
+        <div class="col-sm-3"> 
+          <select class="custom-select mr-sm-2" id="business_field" name="business_field" ngModel>
+            <option selected>Pilih...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+      </div>
+    
+      <div class="row" style="margin-top: 20px">
+        <div class="col-sm-2" style="padding: 0px" >
+          <label for="time-start" style="margin-top: 5px">Mulai Kerjasama</label>
+        </div>
+        <div class="col-sm-3">
+          <div class="input-group">
+            <input id="time-start" class="form-control" placeholder="yyyy-mm-dd" ngbDatepicker #dp="ngbDatepicker" name="time_start" ngModel>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" (click)="dp.toggle()">
+                <i class="fa fa-calendar"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row" style="margin-top: 20px">
+        <div class="col-sm-2" style="padding: 0px" >
+          <label for="contract_value" style="margin-top: 5px">Nilai Kerjasama</label>
+        </div>
+        <div class="col-sm-10"> 
+          <input type="number" id="contract_value" class="form-control" style="display: inline" placeholder="Masukkan Nilai Kontrak" name="contract_value" ngModel>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 20px">
+        <div class="col-sm-2" style="padding: 0px" >
+          <label for="warranty" style="margin-top: 5px">Bukti Kerjasama</label>
+        </div>
+        <div class="col-sm-10"> 
+          <input type="text" id="warranty" class="form-control" style="display: inline" placeholder="Masukkan Bukti Kerjasama" name="warranty" ngModel>
+        </div>
+      </div>
+      
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<ng-template #modalDelete let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Delete Data</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="dateOfBirth">Date of birth</label>
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>

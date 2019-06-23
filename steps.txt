@@ -1,0 +1,51 @@
+CREATE ANGULAR PROJECT VIA CLI
+==============================
+1. ng new lelangApps --skip-install --routing
+2. cd lelangApps
+3. yarn
+4. ng build
+
+INSTALL DEPENDENCIES (EXPRESS)
+==============================
+1. yarn add express body-parser     |     express is server and body-parser is middleware
+2. create server.js 
+
+INSTALL DEPENDENCIES (MONGOOSE) => to interact between server and database (mongodb) to perform
+===============================
+1. yarn add mongoose
+
+# mongoose to interact between server and databse (mongodb) to perform the require operation
+# mongoose is a npm package that provides mongodb object mapping
+# mongoose translate data in database to javascript object 
+
+CREATE DATABASE MODEL (SCHEMA)
+==============================
+1. create server/lelang.js
+2. instance lelang model in routes/api.js
+
+INSTALL DEPENDENCIES (BOOTSTRAP & NG-BOOTSTRAP)
+================================
+1. yarn add bootstrap
+2. add "./node_modules/bootstrap/dist/css/bootstrap.min.css" in styles array on angular.json
+3. yarn add @ng-bootstrap/ng-bootstrap
+4. import NgbModule in app.module.ts
+5. add NgbModule in imports array also in app.module.ts
+
+CREATE SERVICE (lelang-service)
+================================
+1. ng generate service lelang
+2. import lelang service to app.module and add to providers array
+3. yarn add @ng-bootstrap/ng-bootstrap
+4. import NgbModule in app.module.ts
+5. add NgbModule in imports array also in app.module.ts
+
+PREVENT CORS server
+===================
+1. yarn add cors
+2. import cors to server.js
+3. app.use(cors())
+
+INSTALL FONT-AWESOME ICON
+=========================
+1. yarn add font-awesome
+2. add in angular.json is "../node_modules/font-awesome/css/font-awesome.css" to apps - styles array
